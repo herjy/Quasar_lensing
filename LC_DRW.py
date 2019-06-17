@@ -3,19 +3,10 @@
 import numpy as np
 from math import *
 
-from astropy.cosmology import LambdaCDM
-from astropy.constants import *
-from astropy import units
-
-from scipy import signal
-
 from astroML.time_series import generate_damped_RW
 
-import pyfits 
 import matplotlib.pyplot as plt
-import matplotlib.colors as colors
 
-import time
 import argparse
 
 # e.g.
@@ -65,7 +56,8 @@ else:
 #      light curve     #
 ########################
 
-for i in range(1000):
+for i in [1]:
+
     sn = np.random.randn(1)
 
     print('-------------------------------')
@@ -89,7 +81,8 @@ for i in range(1000):
     print('mean =','{0:.3f}'.format(mean),'std =','{0:.3f}'.format(std))
 
     fn = stem_out+'/'+fn
-    #np.savetxt(fn,zip(t_drive, f_drive),fmt='%f %f')
+
+    np.savetxt(fn,np.array([t_drive, f_drive]).T,fmt='%f')
 
     plt.plot(t_drive, f_drive,  color='black', label='DRW')
 
@@ -97,3 +90,5 @@ for i in range(1000):
     plt.ylabel('Fraction Variation')
     plt.legend(loc=3)
     plt.show()
+
+
