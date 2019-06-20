@@ -82,6 +82,7 @@ for i in [1]:
 
     fn = stem_out+'/'+fn
 
+    #Saves  arrays
     np.savetxt(fn,np.array([t_drive, f_drive]).T,fmt='%f')
 
     plt.plot(t_drive, f_drive,  color='black', label='DRW')
