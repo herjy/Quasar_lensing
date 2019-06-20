@@ -8,7 +8,7 @@ lc = np.copy(data[:,1])
 t -= np.max(t)*2
 
 #A draw of random time delays of the order of a couple days
-dts = np.random.rand(4)*5
+dts = np.random.rand(4)*25
 h = t[1]-t[0]
 D = t[-1]-t[0]
 
@@ -68,9 +68,17 @@ if interupt == 1:
 #    plt.plot(ct, obs_lcs[i]+np.random.rand(1)*obs_lcs[i].max(), label = 'Shifted observations')
 plt.plot(t_samp, lcs_sampled[:].T+np.random.rand(4)*lcs_sampled[:].max()/2, 'o', label = 'Shifted observations')
 plt.plot(t, data[:,1], 'r', label = 'Truth')
+plt.legend()
+plt.title('truth and observations, mag shift')
+plt.xlabel ('time')
+plt.ylabel('magnitude')
 plt.show()
 
 #Same plot as before but without magnitude shift
+plt.title('truth and observations')
 plt.plot(t_samp, lcs_sampled[:].T, 'o', label = 'Shifted observations')
 plt.plot(t, data[:,1], 'r', label = 'Truth')
+plt.legend()
+plt.xlabel ('time')
+plt.ylabel('magnitude')
 plt.show()
