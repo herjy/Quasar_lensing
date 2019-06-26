@@ -2,14 +2,14 @@ import numpy as np
 import pickle 
 import matplotlib.pyplot as plt
 
-matrix_sinc = np.loadtxt('matrix_sinc.txt')
-f_s = np.loadtxt('f_s.txt')
-f_k = np.loadtxt('f_k.txt')
-t_s = np.array(np.loadtxt('t_s.txt'))
-with open('t_k_.pickle', 'rb') as g: # internet said to use this to save a tuple
+matrix_sinc = np.loadtxt('matrix_sinc.txt') # uploading the sinc matrix
+f_s = np.loadtxt('f_s.txt') # f(t_s = current sampling)
+f_k = np.loadtxt('f_k.txt') # f(t_k) as calculated by the least squares solution to use as an initial guess for gradient descent
+t_s = np.array(np.loadtxt('t_s.txt')) # current sampling
+with open('t_k_.pickle', 'rb') as g: # internet said to use this to open a tuple
      t_k_ = pickle.load(g)
 t_k = t_k_[0]
-h = t_k_[1]
+#h = t_k_[1]
 
 #first let's transpose:
 A = matrix_sinc.T
