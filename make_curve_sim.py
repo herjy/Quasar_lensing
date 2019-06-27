@@ -48,7 +48,9 @@ obs_lcs = np.array(obs_lcs)
 
 #Times of observations designed to have one observation every 3 days on average
 t_samp = (np.random.rand(np.int(D/3))*D+ct[0])
-
+t_samp.sort()
+tdiff = [t_samp[i+1]-t_samp[i] for i in range(np.size(t_samp)-1)]
+print('mean on samples',np.mean(tdiff))
 #Localisation of samples:
 t_diff = np.abs(ct[:, np.newaxis]-t_samp[np.newaxis, :]).astype(int)
 loc = np.argmin(t_diff, axis = 0)
