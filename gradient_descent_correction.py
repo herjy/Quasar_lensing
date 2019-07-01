@@ -2,16 +2,6 @@ import numpy as np
 import pickle 
 import matplotlib.pyplot as plt
 
-<<<<<<< HEAD
-matrix_sinc = np.loadtxt('matrix_sinc.txt')
-f_s = np.loadtxt('f_s.txt')
-f_k = np.loadtxt('f_k.txt')
-t_s = np.array(np.loadtxt('t_s.txt'))
-with open('t_k_.pickle', 'rb') as g: # internet said to use this to save a tuple
-     t_k_ = pickle.load(g)
-t_k = t_k_[0]
-h = t_k_[1]
-=======
 matrix_sinc = np.loadtxt('matrix_sinc.txt') # uploading the sinc matrix
 f_s = np.loadtxt('f_s.txt') # f(t_s = current sampling)
 f_k = np.loadtxt('f_k.txt') # f(t_k) as calculated by the least squares solution to use as an initial guess for gradient descent
@@ -20,7 +10,6 @@ with open('t_k_.pickle', 'rb') as g: # internet said to use this to open a tuple
      t_k_ = pickle.load(g)
 t_k = t_k_[0]
 #h = t_k_[1]
->>>>>>> 1972a56dc58f6b99da72a0e771b4e1545836afc5
 
 #first let's transpose:
 A = matrix_sinc.T
@@ -44,15 +33,6 @@ def linorm(S, nit):
         x0 = y / yn
     return 1./xn
 # linorm(A,100) found to be 0.20698332641517986 , higher iteration don't really change it, I copied it over to mu to avoid calculating it each time
-<<<<<<< HEAD
-mu = 0.20698*(1.5) 
-# initialize X, I chose to use the sol of least squares as the initial guess (?)
-X = f_k
-
-while (np.linalg.norm(Y-A@X))**2 > 0.3: # calculated this norm^2 for the least squares sol it gave 0.5 so I chose 0.5>0.3 
-    X_new = X + mu*((A.T)@(Y-A@X))
-    X = X_new
-=======
 mu = linorm(A, 20)/100.
 print(mu)
 # initialize X, I chose to use the sol of least squares as the initial guess (?)
@@ -61,34 +41,33 @@ X = f_k*0
 count = 0
 R = [np.sum(Y**2)]
 epsilon = 0.3
+print('not done')
 while (R[-1] > epsilon) and (count < 10000): # calculated this norm^2 for the least squares sol it gave 0.5 so I chose 0.5>0.3
     #print(count)
     X_new = X + mu*((A.T)@(Y-A@X))
     X = X_new.copy()
     R.append(np.sum((Y-A@X)**2.))
     count+=1
-
+print('kinda done')
 plt.title('Convergence')
 plt.plot(np.array(R[1:]))
 plt.xlabel('iterations')
 plt.ylabel('error')
 plt.show()
->>>>>>> 1972a56dc58f6b99da72a0e771b4e1545836afc5
+
 #print(X == f_k)
 # np.savetxt('f_k_gd',X)
 #print(t_k)
 
-<<<<<<< HEAD
-=======
-print(X)
+#print(X)
 
->>>>>>> 1972a56dc58f6b99da72a0e771b4e1545836afc5
 cut = np.logical_and(X<np.max(f_s) , X>np.min(f_s)) # making a cut to avoid plotting outliers except that as of now all of them are outliers lol
 plt.plot(t_s,f_s,'o',label = 'original')
-plt.plot(t_k,X,'o',label='interpolated', color = 'orange') 
-#plt.plot(t_k[cut],X[cut],'o',label='interpolated', color = 'orange')   
+plt.plot(t_k,X,'o',label='interpolated', color = 'orange')
+#plt.plot(t_k[cut],X[cut],'o',label='interpolated', color = 'orange')
 plt.xlabel('time[days]')
 plt.ylabel('magnitude')
 plt.title('sinc interpolated values')
 plt.legend()
 plt.show()
+print('done')
