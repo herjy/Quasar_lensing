@@ -7,11 +7,6 @@ import argparse
 import random
 import pickle
 
-# data = np.loadtxt('RXJ1131_ALL.rdb',skiprows=2)
-# data1=np.genfromtxt('HE0435_ECAM.rdb',skip_header=2)
-# time = np.sort(np.concatenate((data[:,0],data1[:,0])))
-# t_drive_new = np.loadtxt('t_drive_new.txt')
-
 def index(dt_max,t_drive, num_curve=4):
     '''
     makes the time delays, 
