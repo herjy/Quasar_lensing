@@ -5,10 +5,14 @@ import matplotlib.pyplot as plt
 
 def T_K(step,sample):
     '''
+    generate the desired time sampling
+
     input:
     step : the time step for the desired sampling
+    sample: time sample of all shifted curves, for ex. array saved in sample.txt
+
     output:
-    returns a tuple: 0th index is the time sampling and 1st index is the time step (approximately the same as the argument 'step')
+    returns a tuple: 0th index is the time sampling and 1st index is the time step (almost the same as the argument 'step')
     '''
     
     min_ = np.ceil(np.min(sample))
@@ -18,9 +22,13 @@ def T_K(step,sample):
 
 def least_squares(t_s,T_K,f_s):
     ''' 
+    implement sinc interpolation using least squares
+    input:
+    t_s: true time sample, ex. sorted array from 'sample.txt'
+    T_K: desired time sample, ex. 0th index of the output of the T_K function
+
     output:
-    the sinc matrix made of sinc(tk-ts /h)
-    plot of interpolated values using sinc and least squares 
+    plot of interpolated values  
     '''
     t_k = T_K[0]
     h = T_K[1]
@@ -43,6 +51,16 @@ def least_squares(t_s,T_K,f_s):
 
 
 def gradient_descent(t_s,T_K,f_s):
+    ''' 
+    implement sinc interpolation using gradient_descent
+    input:
+    t_s: true time sample, ex. sorted array from 'sample.txt'
+    T_K: desired time sample, ex. 0th index of the output of the T_K function
+    f_s: magnitudes corresponding to true time sample, ex. those obtained from the simulation_ function within simulation_functions.py
+
+    output:
+    convergence plot, plot of interpolated values  
+    '''
     t_k = T_K[0]
     h = T_K[1]
     matrix = t_s[np.newaxis,:]-t_k[:,np.newaxis]

@@ -9,16 +9,16 @@ import pickle
 
 def index(dt_max,t_drive, num_curve=4):
     '''
-    makes the time delays, 
-    outputs the indices of the individual time shifted samples within their sorted, concatenated array
+    generates the time delays and outputs the indices of the individual time shifted samples within their sorted, concatenated array
     
     inputs:
     
-    dt_max: max of generated time delay
-    time_sample: the true time sample , default: t_drive_new array
-    num_curve: the number of shifted curves , default: 4
+    dt_max : the max of the generated time delay in days for ex: 15
+    t_drive : the true time sample for ex: the array stored in t_drive_new.txt
+    num_curve: the number of shifted curves we want to generate , default: 4
     
-    output: sample and indices
+    output: time sample made of concatenated times of shifted curves , indices of each shifted curve within the sample array
+
     '''
     time_delay = np.random.rand(num_curve)*dt_max # generating num_curve time delays between 0 and dt_max
     
@@ -53,21 +53,26 @@ def index(dt_max,t_drive, num_curve=4):
     index3 = np.array(index3).flatten()
 
 
-    index_truth = []
+    index_truth = [] # only useful if t_drive is added to sample
     for i in range(n0+n1+n2+n3,n0+n1+n2+n3+ntruth):
         index_truth.append(np.where(np.argsort(sample) == i))
     index_truth = np.array(index_truth).flatten()
     
     return index0, index1, index2, index3, index_truth, sample,time_delay
+
 # to check that index() is working, uncomment line below, replace 3 with 0,1,2,4
 #np.sort(sample)[index3] == (t_drive+time_delay[3]) 
 
 
 def simulation_(sample_):
     '''
-    simulating data using any time sampling the time axis
+    simulating data using any time sampling as the time axis
+
     input: 
-    sample_: time sample made of concatenated arrays of the time sample of each shifted curve. default: sample from index()
+    sample_: time sample made of concatenated arrays of the individual time sample of each shifted curve. default: sample obtained from index()
+    
+    output:
+    magnitudes corresponding to the given time sample (--> full light curve.)
 
     '''
 
@@ -111,12 +116,12 @@ def plot(mag0,mag1,mag2,mag3, delay,t):
     plots the time shifter curves, plots alligned curves (shifted back)
     
     input:
-    t : the original time sample of the true curve
-    mag0,mag1,mag2,mag3 : magnitudes of the shifted curve
-    delay : array containing the original time delays 
+    t : the original time sample of the true curve for ex. the array stored in time_drive.txt
+    mag0,mag1,mag2,mag3 : magnitudes of the shifted curves, obtained from indexing the output of the simulation_ function
+    delay : array containing the original time delays, obtained from the index_ function 
     
     output:
-    plots
+    plots of simulated data.
     '''
     
     #plt.plot(t_drive, f_truth, 'o', color='black', label='DRW- True')

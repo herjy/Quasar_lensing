@@ -1,9 +1,6 @@
 import numpy as np
-import pickle 
-import matplotlib.pyplot as plt
-from sinc_functions import T_K,least_squares, gradient_descent
-from numpy.linalg import inv
-from simulation import simulation_
+from interpolation_functions import T_K,least_squares, gradient_descent
+from simulation_functions import simulation_
 
 
 
@@ -15,7 +12,9 @@ T_K_ = T_K(8,sample)  # here you can change the step of desired sampling
 f_s = simulation_(sample)
 
 
-#least_squares(t_s, T_K_,f_s)
+#least_squares(t_s, T_K_,f_s) #uncomment to run sinc interpolation using least_squares
+
+# sinc interpolation using gradient_descent 
 
 gradient_descent(t_s,T_K_,f_s)
 
