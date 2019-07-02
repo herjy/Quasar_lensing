@@ -1,4 +1,4 @@
-## brief description
+## Description
 
 run main_simulation to generate time shifted curves, run main_interpolation to choose a different time sampling and interpolate for the magnitudes using either least squares or gradient descent.
  
