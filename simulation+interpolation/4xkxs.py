@@ -57,13 +57,40 @@ X = np.zeros(len(tk_0))
 count = 0
 R = [np.sum(Y ** 2)]
 epsilon = 0.3
+#print(np.matmul((A.T) , (Y - A @ X)).shape)
+# r = B-A@X
+# delta = (r.T)@r
+# conv = delta
+# delta0=delta
+# print(r.shape,A.shape)
+# while count < 1000:
+#     q = A@r
+#     alpha = delta/(q.T @r)
+#     X_new = X + alpha*r
+#     X = X_new.copy()
+#     if iter%50 == 0:
+#         r = B-A@X
+#     else:
+#         r = r-alpha*q
+#     delta = (r.T)@r
+#     count += 1
+# print(X)
+
 
 while (R[-1] > epsilon) and (
         count < 1000):  # calculated this norm^2 for the least squares sol it gave 0.5 so I chose 0.5>0.3
-    X_new = X + mu * ((A.T) @ (Y - A @ X))
+    X_new = X + mu * ((A[0].T) @ (Y[0] - A[0] @ X))
+    X = X_new.copy()
+    X_new = X + mu * ((A[1].T) @ (Y[1] - A[1] @ X))
+    X = X_new.copy()
+    X_new = X + mu * ((A[2].T) @ (Y[2] - A[2] @ X))
+    X = X_new.copy()
+    X_new = X + mu * ((A[3].T) @ (Y[3] - A[3] @ X))
     X = X_new.copy()
     R.append(np.sum((Y - A @ X) ** 2.))
     count += 1
+
+
 
 plt.title('Convergence')
 plt.plot(np.array(R[1:]))
@@ -72,10 +99,16 @@ plt.ylabel('error')
 plt.show()
 
 cut = np.logical_and(X < np.max(Y), X > np.min(Y))
-plt.plot(ts[i], Y, 'o', label='original')
-plt.plot(tk[i][cut], X[cut], 'o', label='interpolated', color='orange')
+plt.plot(ts_0, Y[0], 'o', label='light curve 1')
+plt.plot(ts_1, Y[1], 'o', label='light curve 2')
+plt.plot(ts_2, Y[2], 'o', label='light curve 3')
+plt.plot(ts_3, Y[3], 'o', label='light curve 4')
+
+plt.plot(tk[0][cut], X[cut],'o', label='interpolated', color='black')
 plt.xlabel('time[days]')
 plt.ylabel('magnitude')
 plt.title('sinc interpolated values')
 plt.legend()
 plt.show()
+
+#print(B[1].shape)
