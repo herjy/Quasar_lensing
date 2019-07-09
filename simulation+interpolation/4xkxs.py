@@ -28,13 +28,13 @@ fs_2 = f[index2]
 fs_3 = f[index3]
 
 # desired sampling for each curve
-tk_0 = T_K(8,ts_0)[0]
-tk_1 = T_K(8,ts_1)[0]
-tk_2 = T_K(8,ts_2)[0]
-tk_3 = T_K(8,ts_3)[0]
+tk_0 = T_K(3,ts_0)[0]
+tk_1 = T_K(3,ts_1)[0]
+tk_2 = T_K(3,ts_2)[0]
+tk_3 = T_K(3,ts_3)[0]
 tk = np.array([tk_0,tk_1,tk_2,tk_3])
 
-h=8
+h=3
 time_delays = ind[6]
 
 # sinc matrix  # make this into for loop
@@ -78,7 +78,7 @@ epsilon = 0.3
 
 
 while (R[-1] > epsilon) and (
-        count < 1000):  # calculated this norm^2 for the least squares sol it gave 0.5 so I chose 0.5>0.3
+        count < 10000):  # calculated this norm^2 for the least squares sol it gave 0.5 so I chose 0.5>0.3
     X_new = X + mu * ((A[0].T) @ (Y[0] - A[0] @ X))
     X = X_new.copy()
     X_new = X + mu * ((A[1].T) @ (Y[1] - A[1] @ X))
