@@ -21,6 +21,15 @@ def size_estimate(i):
     return np.int((np.sqrt(np.sum(np.array(f2))))/F_error)
 
 def simulate_noise():
+    '''
+    adds guassian noise to simulated data
+    no input
+    output:
+    ts : simulation time sampling
+    fs+noise : noisy magnitude corresponding to ts 
+    time_delays: time delay in each of the four curves
+    noise_std: the standard deviation of the distribution of noise added to each curve
+    '''
 
     t_drive_new = np.loadtxt('t_drive_new.txt') # true time sample.
     ind = index(15,t_drive_new) # 15 means that the time delay is chosen randomly between 0 and 15 days
@@ -48,7 +57,7 @@ def simulate_noise():
             f2.append(mag[i]**2)
         return (np.sqrt(np.sum(np.array(f2))))/fraction
     error0,error1,error2,error3 = std_gausian(a,fs),std_gausian(b,fs),std_gausian(c,fs),std_gausian(d,fs)
-    #print(error0,error1,error2,error3)
+    noise_std = np.array([error0,error1,error2,error3])
 
     # generating noise
     noise0= np.random.normal(0,error0,size = len(fs[0]))
@@ -57,7 +66,7 @@ def simulate_noise():
     noise3= np.random.normal(0,error3,size = len(fs[3]))
     noise = np.array([noise0,noise1,noise2,noise3])
     
-    return ts, fs+noise, time_delays
+    return ts, fs+noise, time_delays, noise_std
 
 
 # for i in range(4):
