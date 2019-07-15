@@ -32,7 +32,7 @@ def simulate_noise():
     '''
 
     t_drive_new = np.loadtxt('t_drive_new.txt') # true time sample.
-    ind = index(15,t_drive_new) # 15 means that the time delay is chosen randomly between 0 and 15 days
+    ind = index(700,t_drive_new) # 15 means that the time delay is chosen randomly between 0 and 15 days
 
     # getting the indices of each time shifter curve
     index0, index1,index2,index3 = ind[0],ind[1],ind[2],ind[3]
@@ -66,7 +66,7 @@ def simulate_noise():
     noise3= np.random.normal(0,error3,size = len(fs[3]))
     noise = np.array([noise0,noise1,noise2,noise3])
     
-    return ts, fs+noise, time_delays, noise_std
+    return ts, fs, time_delays, noise_std #+noise
 
 
 # for i in range(4):
