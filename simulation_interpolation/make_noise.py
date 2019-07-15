@@ -11,7 +11,7 @@ def size_estimate(i):
     :return: mean of the fraction sqrt(f1^2 + f2^3+ ...)/mean(error in mag)
     '''
     
-    d = np.loadtxt('../../data/RXJ1131_ALL.rdb',skiprows=2)
+    d = np.loadtxt('../RXJ1131_ALL.rdb',skiprows=2)
 
     f = d[:,i]
     F_error = np.mean(d[:,i+1])
