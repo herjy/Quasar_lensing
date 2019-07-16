@@ -20,10 +20,12 @@ def size_estimate(i):
         f2.append(f[i]**2)
     return np.int((np.sqrt(np.sum(np.array(f2))))/F_error)
 
-def simulate_noise():
+def simulate_noise(dt_max, noise=True):
     '''
     adds guassian noise to simulated data
-    no input
+    input:
+    dt_max : time delays will be taken randomly between 0 and delay_max
+    noise : to not add any noise, set to False, default : True. 
     output:
     ts : simulation time sampling
     fs+noise : noisy magnitude corresponding to ts 
@@ -32,8 +34,8 @@ def simulate_noise():
     '''
 
     t_drive_new = np.loadtxt('t_drive_new.txt') # true time sample.
-    ind = index(700,t_drive_new) # 15 means that the time delay is chosen randomly between 0 and 15 days
 
+    ind = index(dt_max,t_drive_new) 
     # getting the indices of each time shifter curve
     index0, index1,index2,index3 = ind[0],ind[1],ind[2],ind[3]
     sample = np.sort(ind[5])
@@ -64,8 +66,13 @@ def simulate_noise():
     noise1= np.random.normal(0,error1,size = len(fs[1]))
     noise2= np.random.normal(0,error2,size = len(fs[2]))
     noise3= np.random.normal(0,error3,size = len(fs[3]))
-    noise = np.array([noise0,noise1,noise2,noise3])
+    noise_ = np.array([noise0,noise1,noise2,noise3])
     
+    if noise == True:
+        return ts, fs+noise_, time_delays, noise_std
+    if noise == False:  
+        return ts, fs, time_delays, noise_std
+
     return ts, fs, time_delays, noise_std #+noise
 
 
