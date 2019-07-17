@@ -23,7 +23,7 @@ def index(dt_max,t_drive, num_curve=4):
     time_delay = np.random.rand(num_curve)*dt_max # generating num_curve time delays between 0 and dt_max
     
     # add t_drive to the concatenation to create the truth curve later on
-    sample =np.concatenate((t_drive+time_delay[0],t_drive+time_delay[1],t_drive+time_delay[2],t_drive+time_delay[3]))#t_drive))
+    sample =np.concatenate((t_drive+time_delay[0],t_drive+time_delay[1],t_drive+time_delay[2],t_drive+time_delay[3],t_drive))
     
 
     n0 = len(t_drive+time_delay[0])
@@ -111,7 +111,7 @@ def simulation_(sample_):
 
     return generate_damped_RW(np.sort(sample_), tau=tau, z=zs, SFinf=SFinf, xmean=xmean,random_state=5)
 
-def plot(mag0,mag1,mag2,mag3, delay,t):
+def plot(mag0,mag1,mag2,mag3, mag_truth, delay,t):
     '''
     plots the time shifter curves, plots alligned curves (shifted back)
     
@@ -124,19 +124,19 @@ def plot(mag0,mag1,mag2,mag3, delay,t):
     plots of simulated data.
     '''
     
-    #plt.plot(t_drive, f_truth, 'o', color='black', label='DRW- True')
-    plt.plot(t, mag0+0.3, 'o', label='DRW1')  
-    plt.plot(t, mag1+0.6, 'o',  label='DRW2')  
-    plt.plot(t ,mag2+0.9, 'o', label='DRW3')  
-    plt.plot(t, mag3+0.12, 'o', label='DRW4')  
+#     plt.plot(t, mag_truth, 'o', color='black', label='DRW- True')
+#     plt.plot(t, mag0+0.3, 'o', label='DRW1')  
+#     plt.plot(t, mag1+0.6, 'o',  label='DRW2')  
+#     plt.plot(t ,mag2+0.9, 'o', label='DRW3')  
+#     plt.plot(t, mag3+0.12, 'o', label='DRW4')  
     
-    plt.title('time shifted curves')
-    plt.xlabel('t (days)')
-    plt.ylabel('Fraction Variation')
-    plt.legend()
-    plt.show()
+#     plt.title('time shifted curves')
+#     plt.xlabel('t (days)')
+#     plt.ylabel('Fraction Variation')
+#     plt.legend()
+#     plt.show()
     
-    #plt.plot(t_drive, f_truth, color='black', label='DRW- True')
+    plt.plot(t, mag_truth,'o', color='black', label='DRW- True')
     plt.plot(t+delay[0], mag0, 'o', label='DRW1')  #+0.3
     plt.plot(t+delay[1], mag1, 'o',  label='DRW2')  #+0.6
     plt.plot(t+delay[2] ,mag2, 'o', label='DRW3')  #+0.9
