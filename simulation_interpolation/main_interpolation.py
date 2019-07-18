@@ -7,9 +7,9 @@ from simulation_functions import simulation_
 sample = np.loadtxt('sample.txt')
 t_s = np.sort(sample[0:5476]) # 0:5476 covers all the  array unless sample is edited for the truth to be included at the end of it
 
-T_K_ = T_K(8,sample)  # here you can change the step of desired sampling
+T_K_ = T_K(3,sample[0:5476])  # here you can change the step of desired sampling
 
-f_s = simulation_(sample)
+f_s = simulation_(sample[0:5476])
 
 
 #least_squares(t_s, T_K_,f_s) #uncomment to run sinc interpolation using least_squares

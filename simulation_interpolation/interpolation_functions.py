@@ -107,8 +107,9 @@ def gradient_descent(t_s,T_K,f_s):
     
     # interpolated values plot
     cut = np.logical_and(X < np.max(f_s), X > np.min(f_s))
-    plt.plot(t_s,f_s,'o',label = 'original')
-    plt.plot(t_k[cut],X[cut],'o',label='interpolated', color = 'orange')
+    plt.figure(figsize=(20,10))
+    plt.plot(t_s,f_s,'o',label = 'original',color='green')
+    plt.plot(t_k[cut],X[cut],'o',label='interpolated', color='black')
     plt.xlabel('time[days]')
     plt.ylabel('magnitude')
     plt.title('sinc interpolated values')

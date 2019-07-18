@@ -30,4 +30,4 @@ f_truth = f[index_truth]
 
 # plotting time shifted curves, and a plot where they are all alligned(shifted back).
 
-plot(f_t0,f_t1,f_t2,f_t3, time_delay,t_drive_new)
+#plot(f_t0,f_t1,f_t2,f_t3, f_truth, time_delay,np.sort(sample))
