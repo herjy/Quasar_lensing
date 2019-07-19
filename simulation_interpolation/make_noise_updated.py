@@ -60,7 +60,7 @@ def simulate_noise(dt_max, noise=True):
             f2.append(mag[i]**2)
         return (np.sqrt(np.sum(np.array(f2))))/fraction
     error0,error1,error2,error3 = std_gausian(a,fs),std_gausian(b,fs),std_gausian(c,fs),std_gausian(d,fs)
-    noise_std = np.array([error0,error1,error2,error3])
+    noise_std = np.array([error0,error1,error2,error3])*5
 
     # generating noise
     noise0= np.random.normal(0,error0,size = len(fs[0]))
@@ -74,7 +74,7 @@ def simulate_noise(dt_max, noise=True):
     if noise == False:  
         return ts, fs, time_delays, noise_std, ts_shifted, f_truth,f,sample
 
-4
+
 # for i in range(4):
 #     plt.plot(ts[i], fs[i]+noise[i], color='black', label = 'with noise')
 #     plt.plot(ts[i], fs[i], color='orange', label='without noise')
