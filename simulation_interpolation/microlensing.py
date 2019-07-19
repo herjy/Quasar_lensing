@@ -20,7 +20,7 @@ def make_microlensing(t= np.loadtxt('t_drive_new.txt'), u0=1.3, te=500, d=0):
     def A(u):
         return (u**2+2)/(u*np.sqrt(u**2 + 4))
     
-    mag = A(u(t))
+    mag = A(u(t))-1
 
     return t,mag ,np.min(mag)
 
