@@ -23,7 +23,7 @@ def index(dt_max,t_drive, num_curve=4):
     time_delay = np.random.rand(num_curve)*dt_max # generating num_curve time delays between 0 and dt_max
     
     # add t_drive to the concatenation to create the truth curve later on
-    sample =np.concatenate((t_drive+time_delay[0],t_drive+time_delay[1],t_drive+time_delay[2],t_drive+time_delay[3],t_drive))
+    sample =np.concatenate((t_drive+time_delay[0],t_drive+time_delay[1],t_drive+time_delay[2],t_drive+time_delay[3]))#,t_drive))
     
 
     n0 = len(t_drive+time_delay[0])

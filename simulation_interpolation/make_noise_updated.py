@@ -70,9 +70,9 @@ def simulate_noise(dt_max, noise=True):
     noise_ = np.array([noise0,noise1,noise2,noise3])
     
     if noise == True:
-        return ts, fs+noise_, time_delays, noise_std,ts_shifted, f_truth,f,sample
+        return ts, fs+noise_, time_delays, noise_std,ts_shifted, f_truth,f,sample, noise_
     if noise == False:  
-        return ts, fs, time_delays, noise_std, ts_shifted, f_truth,f,sample
+        return ts, fs, time_delays, noise_std, ts_shifted, f_truth,f,sample, noise_
 
 
 # for i in range(4):
