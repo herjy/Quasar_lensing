@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4b9ba8fb-729f-4081-876c-b18c1ce1aad6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/simulation_interpolation/4xKxS_updated.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/simulation_interpolation/4xKxS_updated.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simulation_interpolation/make_noise_updated.py" beforeDir="false" afterPath="$PROJECT_DIR$/simulation_interpolation/make_noise_updated.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simulation_interpolation/total variation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/simulation_interpolation/total variation.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simulation_interpolation/make_mircolensing.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/simulation_interpolation/make_mircolensing.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
