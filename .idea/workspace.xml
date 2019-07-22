@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b9ba8fb-729f-4081-876c-b18c1ce1aad6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/simulation_interpolation/4xKxS_updated.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/simulation_interpolation/4xKxS_updated.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simulation_interpolation/make_mircolensing.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/simulation_interpolation/make_mircolensing.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,11 +14,6 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/simulation_interpolation/t_drive_new.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/simulation_interpolation/total variation.ipynb">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
@@ -72,7 +66,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="width" value="1920" />
     <option name="height" value="1045" />
   </component>
@@ -102,6 +96,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/simulation_interpolation/make_noise_updated.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -263,7 +258,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-3" width="1920" height="1052" extended-state="7" />
+    <frame x="0" y="-3" width="1920" height="1052" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
