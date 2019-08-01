@@ -57,11 +57,11 @@ def wavelet(curve, lvl):
 
         cnew = sc.convolve1d(c,newh[0,:],axis = 0, mode =mode)
 
-#  hc = sc.convolve1d(cnew,newh[0,:],axis = 0, mode = mode)
+        hc = sc.convolve1d(cnew,newh[0,:],axis = 0, mode = mode)
  
             
             ###### wj+1 = cj-hcj+1
-        wave[i,:] = c-cnew#hc
+        wave[i,:] = c-hc
  
 
         c = cnew
